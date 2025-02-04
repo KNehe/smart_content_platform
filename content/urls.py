@@ -4,6 +4,7 @@ from .views import (
     GenerateContentView,
     SummarizeContentView,
     UserContentView,
+    RecommendationView,
 )
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
@@ -21,4 +22,9 @@ urlpatterns = [
         name="summarize-content",
     ),
     path("api/user-content/", UserContentView.as_view(), name="user-content"),
+    path(
+        "api/recommendations/<int:content_id>/",
+        RecommendationView.as_view(),
+        name="recommendations",
+    ),
 ]

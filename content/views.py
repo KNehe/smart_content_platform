@@ -68,3 +68,20 @@ class UserContentView(generics.ListAPIView):
 
     def get_queryset(self):
         return Content.objects.filter(user=self.request.user).order_by("-created_at")
+
+
+class RecommendationView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, content_id):
+        try:
+            target_content = Content.objects.get(id=content_id, user=request.user)
+            similar_content = Content.objects.filter(
+                user=request.user, tags__overlap=target_content.tags
+            ).exclude(id=content_id)[:5]
+            serializer = ContentSerializer(similar_content, many=True)
+            return Response(serializer.data)
+        except Content.DoesNotExist:
+            return Response(
+                {"error": "Content not found"}, status=status.HTTP_404_NOT_FOUND
+            )
