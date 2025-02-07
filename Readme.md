@@ -5,6 +5,8 @@
 ![Ollama](https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white)
 
+- Learn how to create it on [YouTube](https://youtu.be/Jn1O3SL1jO0)
+
 The **Smart Content Recommendation and Generation Platform** is a Django-based web application that leverages the **Ollama API** to generate and recommend content. It provides features like AI-powered content generation, summarization, and tag-based recommendations. Users can register, authenticate, and manage their generated content seamlessly.
 
 ---
